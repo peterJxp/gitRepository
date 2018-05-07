@@ -38,7 +38,6 @@
                      onclick="changeImg()" />
                 <a href="javascript:void(0);" class="veryCodedo" onclick="changeImg()">换一张</a>
                 <p id="info" class="veryCodeInfo"></p>
-
             </div>
             <div class="cont_btn_join">
                 <a href="javascript:void(0);" onclick='login()'>登陆</a>

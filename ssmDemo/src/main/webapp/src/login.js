@@ -9,7 +9,7 @@ function login(){
     var password=$("#password").val();
     var code = $("#veryCode").val();
    if (code==""||uname==""||password==""){
-    return false;
+    return  false;
     }else {
        isRightCode(code);
        }
