@@ -17,23 +17,12 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.9.0.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/veryCode.js"></script>
 </head>
 <body>
 <div class="htmleaf-container">
     <div class="cont_principal">
-        <%--<header class="htmleaf-header">--%>
-            <%--<div class="htmleaf-links">--%>
-                <%--<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>--%>
-                <%--<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/css3/ui-design/201603013167.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>--%>
-            <%--</div>--%>
-        <%--</header>--%>
         <div class="cont_join  ">
-            <%--<div class="cont_letras">--%>
-                <%--<p>LET 'S</p>--%>
-                <%--<p>GET</p>--%>
-                <%--<p>LOST</p>--%>
-            <%--</div>--%>
-
             <div class="cont_form_join">
                 <h2>登陆</h2>
 
@@ -44,15 +33,15 @@
                 <input type="password" id="password" name="password" class="input_text" />
 
                 <p>验证码:</p>
-                <input type="password" class="input_text" />
+                <input id="veryCode" name="veryCode" type="text" class="veryCodeInput" value="" />
+                <img id="imgObj" style="margin-left: 10px;float: left" alt="" src="${pageContext.request.contextPath}/DrawImage"
+                     onclick="changeImg()" />
+                <a href="javascript:void(0);" class="veryCodedo" onclick="changeImg()">换一张</a>
+                <p id="info" class="veryCodeInfo"></p>
+
             </div>
-
-            <%--<div class="cont_join_form_finish" style="position: absolute;width: -50px;">--%>
-                    <%--<h2>Finish <i class="material-icons">&#xE5CA;</i></h2>--%>
-            <%--</div>--%>
-
             <div class="cont_btn_join">
-                <a href="javascript:void(0);" onclick='join_1()'>登陆</a>
+                <a href="javascript:void(0);" onclick='login()'>登陆</a>
             </div>
         </div>
     </div>
