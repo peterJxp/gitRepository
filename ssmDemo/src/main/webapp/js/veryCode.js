@@ -38,8 +38,6 @@ function callback(data) {
         var password=$("#password").val();
         window.location.href="/Us/login?uname="+uname+"&password="+password;
     } else {
-        alert(data)
-        // $("#info").val(data);
         $("#info").html(data);
         return;
     }

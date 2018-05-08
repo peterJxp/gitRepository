@@ -76,6 +76,16 @@
     <url-pattern>/ResultServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ExportExecl</servlet-name>
+    <servlet-class>com.ssm.test.ExportExecl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ExportExecl</servlet-name>
+    <url-pattern>/ExportExecl</url-pattern>
+  </servlet-mapping>
+
   <!-- session配置 -->
   <session-config>
     <session-timeout>15</session-timeout>

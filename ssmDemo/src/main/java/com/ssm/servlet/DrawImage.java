@@ -101,7 +101,7 @@ public class DrawImage extends HttpServlet {
     }
 
     /**
-     * 画随机汉字
+     * 画随机线条验证码
      *
      * @param g
      * @return
