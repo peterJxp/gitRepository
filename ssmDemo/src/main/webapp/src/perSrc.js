@@ -79,6 +79,7 @@ function deleteUser() {
 }
 
 function exportExecl() {
+    var tableName=$("#tableName").val();
     var selectedRows = $("#dg").datagrid("getSelections");
     if (selectedRows.length == 0) {
         $.messager.alert("系统提示", "请选择要导出的数据！");
@@ -90,5 +91,5 @@ function exportExecl() {
         strIds.push(selectedRows[i].id);
     }
     var ids = strIds.join(",");
-    window.location.href = "/ExportExecl?ids=" + ids;
+    window.location.href = "/ExportExecl?ids=" + ids+"&tableName="+tableName;
 }
