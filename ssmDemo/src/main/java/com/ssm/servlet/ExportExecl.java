@@ -10,10 +10,12 @@ import com.ssm.model.Person;
 import org.apache.poi.hssf.usermodel.*;
 import org.json.JSONObject;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
@@ -23,12 +25,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-public class ExportExecl extends HttpServlet {
-    private static final String SQLdriver = "com.mysql.jdbc.Driver";
-    private static final String Url = "jdbc:mysql://127.0.0.1:3306/test_database";
-    private static final String username = "root";
-    private static final String password = "root";
+public class ExportExecl extends HttpServlet implements Servlet{
+    private static  String SQLdriver = "";
+    private static  String Url = "";
+    private static  String username = "";
+    private static  String password = "";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,8 +41,9 @@ public class ExportExecl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ids = req.getParameter("ids");
+        String tableName = req.getParameter("tableName");
         List<Person> personList = new ArrayList<Person>();
-        String sql = "SELECT  * FROM person WHERE  id IN (" + ids + ")";
+        String sql = "SELECT  * FROM "+tableName+" WHERE  id IN (" + ids + ")";
         try {
             Class.forName(SQLdriver);
             Connection connection = DriverManager.getConnection(Url, username, password);
@@ -106,7 +110,6 @@ public class ExportExecl extends HttpServlet {
 //            e.printStackTrace();
 //        }
 
-
         // 第六步，下载excel
         OutputStream out = null;
         try {
@@ -132,5 +135,20 @@ public class ExportExecl extends HttpServlet {
         String newStr = m.substring(m.indexOf('{') + 1, m.indexOf('}'));
         String[] strArray = newStr.split(",");
         return strArray;
+    }
+
+    @Override
+    public void init() throws ServletException {
+        Properties properties=new Properties();
+        try {
+            properties.load(this.getClass().getResourceAsStream("/jdbc.properties") );
+            SQLdriver= properties.getProperty("jdbc.m.driverClassName");
+            Url= properties.getProperty("jdbc.m.url");
+            username= properties.getProperty("jdbc.m.username");
+            password= properties.getProperty("jdbc.m.password");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        super.init();
     }
 }

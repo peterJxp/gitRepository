@@ -24,6 +24,7 @@
 
 </head>
 <body>
+<input type="hidden" value="person" id="tableName">
 
 <table id="dg" title="用户管理" class="easyui-datagrid" fitColumns="true"
        pagination="true" rownumbers="true"
@@ -47,7 +48,7 @@
     <a href="javascript:deleteUser()" class="easyui-linkbutton"
        iconCls="icon-remove" plain="true">删除</a>
     <a href="javascript:exportExecl()" class="easyui-linkbutton"
-       iconCls="icon-print" plain="true">init</a>
+       iconCls="icon-print" plain="true">export</a>
     <div>
 
         &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20"
