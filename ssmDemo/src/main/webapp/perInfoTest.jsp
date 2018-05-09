@@ -49,6 +49,7 @@
     <a href="javascript:exportExecl()" class="easyui-linkbutton"
        iconCls="icon-print" plain="true">init</a>
     <div>
+
         &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20"
                                onkeydown="if(event.keyCode == 13)searchUser()"/> <a
             href="javascript:searchUser()" class="easyui-linkbutton"
