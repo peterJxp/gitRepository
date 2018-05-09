@@ -41,14 +41,16 @@
 
 <div id="tb">
     <a href="javascript:openUserAddDialog()" class="easyui-linkbutton"
-       iconCls="icon-add" plain="true">添加</a> <a
-        href="javascript:openUserModifyDialog()" class="easyui-linkbutton"
-        iconCls="icon-edit" plain="true">修改</a> <a
-        href="javascript:deleteUser()" class="easyui-linkbutton"
-        iconCls="icon-remove" plain="true">删除</a>
+       iconCls="icon-add" plain="true">添加</a>
+    <a href="javascript:openUserModifyDialog()" class="easyui-linkbutton"
+       iconCls="icon-edit" plain="true">修改</a>
+    <a href="javascript:deleteUser()" class="easyui-linkbutton"
+       iconCls="icon-remove" plain="true">删除</a>
+    <a href="javascript:exportExecl()" class="easyui-linkbutton"
+       iconCls="icon-print" plain="true">init</a>
     <div>
         &nbsp;用户名：&nbsp;<input type="text" id="s_userName" size="20"
-                               onkeydown="if(event.keyCode == 13)searchUser()" /> <a
+                               onkeydown="if(event.keyCode == 13)searchUser()"/> <a
             href="javascript:searchUser()" class="easyui-linkbutton"
             iconCls="icon-search" plain="true">查询</a>
     </div>
@@ -67,13 +69,13 @@
                 <tr>
                     <td>姓名：</td>
                     <td><input type="text" id="name" name="name"
-                               class="easyui-validatebox" required="true" />&nbsp;
+                               class="easyui-validatebox" required="true"/>&nbsp;
                         <span style="color: red">*</span>
                     </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>年龄：</td>
                     <td><input type="text" id="age" name="age"
-                               class="easyui-validatebox" required="true" />&nbsp;
+                               class="easyui-validatebox" required="true"/>&nbsp;
                         <span style="color: red">*</span>
                     </td>
                 </tr>

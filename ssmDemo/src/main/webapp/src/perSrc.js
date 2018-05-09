@@ -1,4 +1,5 @@
-var url="";
+var url = "";
+
 function openUserAddDialog() {
     $("#dlg").dialog("open").dialog("setTitle", "添加用户信息");
     url = "/perTest/add";
@@ -18,9 +19,9 @@ function openUserModifyDialog() {
 
 function saveUser() {
     $("#fm").form("submit", {
-        url : url,
-        success : function(result) {
-            var result = eval('('+ result + ')');
+        url: url,
+        success: function (result) {
+            var result = eval('(' + result + ')');
             if (result.success) {
                 $.messager.alert("系统提示", "保存成功！");
                 // resetValue();
@@ -56,16 +57,16 @@ function deleteUser() {
         return;
     }
     var strIds = [];
-    for ( var i = 0; i < selectedRows.length; i++) {
+    for (var i = 0; i < selectedRows.length; i++) {
         strIds.push(selectedRows[i].id);
     }
     var ids = strIds.join(",");
     $.messager.confirm("系统提示", "您确定要删除这<font color=red>"
-        + selectedRows.length + "</font>条数据吗？", function(r) {
+        + selectedRows.length + "</font>条数据吗？", function (r) {
         if (r) {
             $.post("/perTest/deletePer", {
-                ids : ids
-            }, function(result) {
+                ids: ids
+            }, function (result) {
                 if (result.success) {
                     $.messager.alert("系统提示", "数据已成功删除！");
                     $("#dg").datagrid("reload");
@@ -75,4 +76,18 @@ function deleteUser() {
             }, "json");
         }
     });
+}
+
+function exportExecl() {
+    var selectedRows = $("#dg").datagrid("getSelections");
+    if (selectedRows.length == 0) {
+        $.messager.alert("系统提示", "请选择要导出的数据！");
+        return;
+    }
+    var strIds = [];
+    for (var i = 0; i < selectedRows.length; i++) {
+        strIds.push(selectedRows[i].id);
+    }
+    var ids = strIds.join(",");
+    window.location.href = "/ExportExecl?ids=" + ids;
 }

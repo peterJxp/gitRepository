@@ -1,4 +1,4 @@
-package com.ssm.test;/*
+package com.ssm.servlet;/*
   Created by IntelliJ IDEA.
   User: jxp
   Date: 2018/5/8/008

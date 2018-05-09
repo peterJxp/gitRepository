@@ -2,19 +2,11 @@ package com.ssm.model;
 
 public class Person {
 
-    private String id;
+    private Long id;
     private String name;
     private int age;
 
     public Person() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -33,10 +25,18 @@ public class Person {
         this.age = age;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';

@@ -44,8 +44,8 @@ public class PerController {
     @RequestMapping("/list")
     public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, Person person, HttpServletResponse res) throws Exception {
         Paging pageBean = new Paging(Integer.parseInt(page), Integer.parseInt(rows));
-        List<Person> personList=personIDao.queryAll();
-        int total=personIDao.getTotal();
+        List<Person> personList = personIDao.queryAll();
+        int total = personIDao.getTotal();
         JSONObject result = new JSONObject();
         JSONArray jsonArray = JSONArray.fromObject(personList);
         result.put("rows", jsonArray);
@@ -55,17 +55,17 @@ public class PerController {
     }
 
     @RequestMapping("/add")
-    public ModelAndView add(Person person,HttpServletResponse response) {
-        if (person.getId()!=null){
+    public ModelAndView add(Person person, HttpServletResponse response) {
+        if (person.getId() != null) {
             personIDao.update(person);
-        }else {
-            person.setId(UUID.randomUUID().toString().replace("-",""));
+        } else {
+            person.setId(System.currentTimeMillis());
             personIDao.addPer(person);
         }
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("success",true);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("success", true);
         try {
-            ReponseUtil.out(response,jsonObject);
+            ReponseUtil.out(response, jsonObject);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,21 +73,21 @@ public class PerController {
     }
 
     @RequestMapping("/deletePer")
-    public ModelAndView delete(String ids,HttpServletResponse httpServletResponse) {
-        int  a=0;
-       String[] idArray= ids.split(",");
-       for(String id:idArray){
+    public ModelAndView delete(String ids, HttpServletResponse httpServletResponse) {
+        int a = 0;
+        String[] idArray = ids.split(",");
+        for (String id : idArray) {
             a = personIDao.delete(id);
-       }
-      if (a==1){
-          JSONObject jsonObject=new JSONObject();
-          jsonObject.put("success",true);
-          try {
-              ReponseUtil.out(httpServletResponse,jsonObject);
-          } catch (Exception e) {
-              e.printStackTrace();
-          }
-      }
+        }
+        if (a == 1) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("success", true);
+            try {
+                ReponseUtil.out(httpServletResponse, jsonObject);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 
